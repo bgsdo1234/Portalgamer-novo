@@ -71,8 +71,12 @@ export default function DetalhesNoticias({route}) {
                     style={{marginHorizontal: 10, marginTop: 20}}
                     renderItem={({item}) => 
 
-                        <Card.Cover source={{ uri: item.ImagemNoticia }} style={{height: 180, width: 300, marginHorizontal: 6, borderRadius: 2}}/>
+                    <Card style={{ height: 265, width: 300, marginBottom: 120, marginHorizontal: 6, }}>
 
+                        <Card.Cover source={{ uri: item.ImagemNoticia }} />
+
+                        <Title style={estilos.tituloDaNoticia}>{item.NomeNoticia} </Title>
+                    </Card>
                     }
                     />
 
@@ -93,7 +97,8 @@ export default function DetalhesNoticias({route}) {
 const estilos = StyleSheet.create ({
     imagemNoticia: {
         height: 230,
-        width: 360
+        width: 360,
+        borderRadius: 0
     },
     tituloNoticia: {
         fontSize: 30,
@@ -119,5 +124,12 @@ const estilos = StyleSheet.create ({
         marginHorizontal: 12,
         fontWeight: 'bold',
         fontSize: 21
+    },
+    tituloDaNoticia: {
+        fontSize: 15,
+        flexDirection: 'row',
+        textAlign: 'justify',
+        fontWeight: 'bold',
+        marginHorizontal: 6
     }
 })

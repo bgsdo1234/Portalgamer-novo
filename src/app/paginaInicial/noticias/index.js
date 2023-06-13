@@ -41,9 +41,11 @@ export default function noticias({ navigation }){
                     >
                             
                         <Card.Cover 
-                        source={{ uri: item.CapaDoJogo }}
+                        source={{ uri: item.ImagemNoticia }}
                         style={estilos.capaDoJogo}
                         />
+
+                        <Title style={estilos.tituloDaNoticia}>{item.NomeNoticia} </Title>
 
                     </Card>
                     
@@ -67,13 +69,24 @@ const estilos = StyleSheet.create({
         marginHorizontal: 10
     },
     card: {
-        height: 180,
+        height: 250,
         width: 300,
         marginHorizontal: 6,
-        borderRadius: 2
+        borderRadius: 15,
+        borderTopEndRadius: 15,
+        borderTopStartRadius: 15,
+        backgroundColor: '#e8f4ff',
+        padding: 3,
     },
     capaDoJogo: {
         height:180,
-        width: 300
+        width: 300,
+    },
+    tituloDaNoticia: {
+        fontSize: 15,
+        flexDirection: 'row',
+        textAlign: 'justify',
+        fontWeight: 'bold',
+        marginHorizontal: 6
     }
 })

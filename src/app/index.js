@@ -1,12 +1,12 @@
 import * as React from 'react';
 import { Text, View, Appbar } from 'react-native';
-import { Icon, Avatar } from 'react-native-paper';
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { createStackNavigator } from '@react-navigation/stack';
+import { Ionicons } from '@expo/vector-icons';
 
 import PaginaInicial from './paginaInicial/index'
 import PaginaJogos from './paginaJogos/index'
-import PesquisarJogos from './pesquisarJogos/index'
 
   function Noticias() {
     return (
@@ -23,18 +23,83 @@ import PesquisarJogos from './pesquisarJogos/index'
     );
   }
   
-  const Tab = createBottomTabNavigator();
+  const Tab = createBottomTabNavigator()
+  const Stack = createStackNavigator()
   
-  export default function BarraInferior() {
+  function BarraInferior() {
     return (
-      <NavigationContainer >
-        <Tab.Navigator>
-          <Tab.Screen name="Pagina Inicial" component={PaginaInicial} options={{ title: 'Inicio', headerTransparent: true, headerShown: false }}/>
-          <Tab.Screen name="Jogos" component={PaginaJogos} />
-          <Tab.Screen name="Noticias" component={Noticias} />
-          <Tab.Screen name="Perfil" component={Perfil} />
-          <Tab.Screen name="PesquisarJogos" component={PesquisarJogos} />
+        <Tab.Navigator
+        screenOptions={{
+          tabBarActiveTintColor: 'white',
+          tabBarInactiveTintColor: '#a8a8a8',
+          tabBarShowLabel: false,
+          tabBarStyle: {
+            position: 'absolute',
+            backgroundColor: '#7478e3',
+            borderTopWidth: 0,
+
+            bottom: 8,
+            left: 8,
+            right: 8,
+            elevation: 0,
+            borderRadius: 10
+          }
+        }}
+        >
+          <Tab.Screen name="PaginaInicial" component={PaginaInicial} 
+          options={{
+            headerShown: false,
+            tabBarIcon: ({ color, size, focused }) => {
+              if(focused){
+                 return <Ionicons name="home" size={size} color={color} />
+               }
+               return <Ionicons name="home-outline" size={size} color={color}/>
+            }
+          }}
+          />
+          <Tab.Screen name="Jogos" component={PaginaJogos} 
+          options={{
+            headerShown: false,
+            tabBarIcon: ({ color, size, focused }) => {
+              if(focused){
+                 return <Ionicons name="game-controller" size={size} color={color} />
+               }
+               return <Ionicons name="game-controller-outline" size={size} color={color}/>
+            }
+          }}
+          />
+          <Tab.Screen name="Noticias" component={Noticias} 
+          options={{
+            headerShown: false,
+            tabBarIcon: ({ color, size, focused }) => {
+              if(focused){
+                 return <Ionicons name="md-newspaper" size={size} color={color} />
+               }
+               return <Ionicons name="md-newspaper-outline" size={size} color={color}/>
+            }
+          }}
+          />
+          <Tab.Screen name="Perfil" component={Perfil} 
+          options={{
+            headerShown: false,
+            tabBarIcon: ({ color, size, focused }) => {
+              if(focused){
+                 return <Ionicons name="person-circle" size={size} color={color} />
+               }
+               return <Ionicons name="person-circle-outline" size={size} color={color}/>
+            }
+          }}
+          />
         </Tab.Navigator>
-      </NavigationContainer>
     );
+  }
+
+  export default function app() {
+    return(
+      <NavigationContainer>
+        <Stack.Navigator>
+          <Stack.Screen name='Principal' component={BarraInferior} options={{ title: 'Inicio', headerTransparent: true, headerShown: false }}/>
+        </Stack.Navigator>
+      </NavigationContainer>
+    )
   }

@@ -1,12 +1,17 @@
+import React from 'react';
+import { useEffect, useState } from 'react';
 import { createStackNavigator } from '@react-navigation/stack'
 import { Avatar, Button } from 'react-native-paper'
 import { View, StyleSheet, ScrollView, TextInput } from 'react-native'
+import { useNavigation } from '@react-navigation/native';
 
 import Noticias from './noticias'
 import Jogos from './jogos'
 import ProcurarJogadores from './procurarJogadores'
+
 import DetalhesJogos from './jogos/detalhes'
 import DetalhesNoticias from './noticias/detalhes'
+import PesquisarJogos from '../pesquisarJogos'
 
 function PaginaInicial({ navigation }) {
 
@@ -34,26 +39,44 @@ const Stack = createStackNavigator()
 
 export default function App(){
 
+    const navigation = useNavigation();
+
+    const pesquisarJogos = () => {
+        navigation.navigate('PesquisarJogos');
+    };
+
+    const [text, onChangeText] = React.useState('Pesquisar apps e jogos');
+
     return(
 
-        <Stack.Navigator>
+        <Stack.Navigator
+        screenOptions={{
+           headerStyle: {
+            backgroundColor: '#7478e3'
+           },
+           headerTintColor: 'white'
+        }}
+        >
 
             <Stack.Screen name="PaginaInicial" component={PaginaInicial} 
             options={{headerTitle: 'Página Inicial',
                     headerRight: ({ navigation }) => ( 
                         <View style={{flexDirection: 'row', alignItems: 'center', marginHorizontal: 15}}>
-                            <Avatar.Icon size={35} icon={'bell'} style={{backgroundColor: 'white', marginRight: 15}} />
-                            <Avatar.Image rounded size={35} source={require('../../../assets/avatar.jpg')} />
+                            <Avatar.Icon size={35} icon={'bell'} 
+                            style={{backgroundColor: null, marginRight: 15}} />
+                            <Avatar.Image rounded size={35} source={require('../../../assets/avatar.jpg')} style={{}} />
                         </View>
                         ), 
                         headerTitle: '',
-                        headerLeft: ({ navigation }) => (
+                        headerLeft: () => (
+
                             <View style={{marginLeft: 20}}>
                                 <Button 
                                 mode='outlined' 
-                                textColor='grey' 
+                                textColor='white' 
                                 icon={'magnify'}
-                                onPress={() => navigation.navigate('PesquisarJogos')}>
+                                style={{borderColor: 'white'}}
+                                onPress={pesquisarJogos}>
                                     Pesquisar apps e jogos
                                 </Button>
                             </View>
@@ -68,7 +91,20 @@ export default function App(){
             ), headerTitle: ''
             }}/>
             <Stack.Screen name="DetalhesNoticias" component={DetalhesNoticias} BackAction={true} />
-            
+            <Stack.Screen name="PesquisarJogos" component={PesquisarJogos} BackAction={true} 
+            options={{title: false,
+                    headerRight: () => (
+                        <View>
+                            <TextInput 
+                            onChangeText={onChangeText}
+                            placeholder='Pesquisar apps e jogos'
+                            style={estilos.textinput}
+                            />
+                        </View>
+                    ),
+                    BackAction: true
+                }}
+            />
 
         </Stack.Navigator>
 
@@ -78,14 +114,14 @@ export default function App(){
 const estilos = StyleSheet.create({
     container: {
         flex: 1,
-        padding: 5
+        padding: 5,
+        backgroundColor: '#f5faff'
     },
     textinput: {
         height: 40,
         margin: 12,
-        borderWidth: 1,
         padding: 10,
-        borderRadius: 20,
-        paddingHorizontal: 15
+        paddingHorizontal: 15,
+        marginRight: 90,
       },
 })

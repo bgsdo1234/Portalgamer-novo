@@ -82,7 +82,11 @@ const estilos = StyleSheet.create({
         height: 150,
         width: 75,
         marginHorizontal: 7,
-        borderRadius: 2
+        borderRadius: 2,
+        borderTopEndRadius: 15,
+        borderTopStartRadius: 15,
+        backgroundColor: '#f5faff',
+        elevation: 0
     },
     capaDoJogo: {
         height:120,
