@@ -1,5 +1,4 @@
 import React from 'react';
-import { useEffect, useState } from 'react';
 import { createStackNavigator } from '@react-navigation/stack'
 import { Avatar, Button } from 'react-native-paper'
 import { View, StyleSheet, ScrollView, TextInput } from 'react-native'
@@ -59,7 +58,7 @@ export default function App(){
         >
 
             <Stack.Screen name="PaginaInicial" component={PaginaInicial} 
-            options={{headerTitle: 'Página Inicial',
+            options={{
                     headerRight: ({ navigation }) => ( 
                         <View style={{flexDirection: 'row', alignItems: 'center', marginHorizontal: 15}}>
                             <Avatar.Icon size={35} icon={'bell'} 

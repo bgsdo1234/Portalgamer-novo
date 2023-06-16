@@ -1,12 +1,14 @@
 import * as React from 'react';
-import { Text, View, Appbar } from 'react-native';
+import { Text, View, StyleSheet } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createStackNavigator } from '@react-navigation/stack';
 import { Ionicons } from '@expo/vector-icons';
+import { Button, Avatar } from 'react-native-paper'
 
 import PaginaInicial from './paginaInicial/index'
 import PaginaJogos from './paginaJogos/index'
+import DetalhesJogos from './paginaInicial/jogos/detalhes';
 
   function Noticias() {
     return (
@@ -43,7 +45,11 @@ import PaginaJogos from './paginaJogos/index'
             right: 8,
             elevation: 0,
             borderRadius: 10
-          }
+          },
+          headerStyle: {
+            backgroundColor: '#7478e3'
+           },
+           headerTintColor: 'white'
         }}
         >
           <Tab.Screen name="PaginaInicial" component={PaginaInicial} 
@@ -61,10 +67,10 @@ import PaginaJogos from './paginaJogos/index'
           options={{
             headerShown: false,
             tabBarIcon: ({ color, size, focused }) => {
-              if(focused){
-                 return <Ionicons name="game-controller" size={size} color={color} />
-               }
-               return <Ionicons name="game-controller-outline" size={size} color={color}/>
+            if(focused){
+              return <Ionicons name="game-controller" size={size} color={color} />
+            }
+              return <Ionicons name="game-controller-outline" size={size} color={color}/>
             }
           }}
           />
@@ -99,6 +105,7 @@ import PaginaJogos from './paginaJogos/index'
       <NavigationContainer>
         <Stack.Navigator>
           <Stack.Screen name='Principal' component={BarraInferior} options={{ title: 'Inicio', headerTransparent: true, headerShown: false }}/>
+          <Stack.Screen name='DetalhesJogos' component={DetalhesJogos}/>
         </Stack.Navigator>
       </NavigationContainer>
     )

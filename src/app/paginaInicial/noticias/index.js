@@ -80,7 +80,7 @@ const estilos = StyleSheet.create({
     },
     capaDoJogo: {
         height:180,
-        width: 300,
+        width: 294,
     },
     tituloDaNoticia: {
         fontSize: 15,
