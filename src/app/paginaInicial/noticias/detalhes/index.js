@@ -65,22 +65,30 @@ export default function DetalhesNoticias({route}) {
 
                     <Text style={estilos.detalhesDaNoticia}>{noticia.DetalhesDaNoticia}</Text>
 
-                    <Title style={estilos.maisNoticias}>Mais Notícias:</Title>
+                    <View style={estilos.containerMaisNoticias}>
+                        
+                        <Title style={estilos.maisNoticias}>Mais Notícias:</Title>
 
-                    <FlatList 
-                    data={noticias}
-                    horizontal={true}
-                    style={{marginHorizontal: 10, marginTop: 20}}
-                    renderItem={({item}) => 
+                        <FlatList 
+                        data={noticias}
+                        horizontal={true}
+                        style={{marginHorizontal: 10, marginTop: 20}}
+                        renderItem={({item}) => 
 
-                    <Card style={{ height: 265, width: 300, marginBottom: 120, marginHorizontal: 6, }}>
+                        <Card style={estilos.cardMaisNoticias}>
 
-                        <Card.Cover source={{ uri: item.ImagemNoticia }} />
+                            <Card.Cover source={{ uri: item.ImagemNoticia }} />
+                            <Title style={estilos.tituloDaNoticia}>{item.NomeNoticia} </Title>
 
-                        <Title style={estilos.tituloDaNoticia}>{item.NomeNoticia} </Title>
-                    </Card>
-                    }
-                    />
+                        </Card>
+                        }
+                        />
+
+                    </View>
+
+                    
+
+                    
 
                 </View>
 
@@ -100,7 +108,8 @@ const estilos = StyleSheet.create ({
     imagemNoticia: {
         height: 230,
         width: 360,
-        borderRadius: 0
+        borderRadius: 0,
+        overflow: 'hidden'
     },
     tituloNoticia: {
         fontSize: 30,
@@ -121,8 +130,17 @@ const estilos = StyleSheet.create ({
         marginTop: 25,
         textAlign: 'justify'
     },
+    containerMaisNoticias: {
+        marginTop: 20,
+        marginBottom: 0,
+        backgroundColor: 'red',
+        margin: 10,
+        borderBottomEndRadius: 30,
+        borderTopStartRadius: 40
+
+    },
     maisNoticias: {
-        marginTop: 40,
+        marginTop: 20,
         marginHorizontal: 12,
         fontWeight: 'bold',
         fontSize: 21
@@ -133,5 +151,12 @@ const estilos = StyleSheet.create ({
         textAlign: 'justify',
         fontWeight: 'bold',
         marginHorizontal: 6
-    }
+    }, 
+    
+    cardMaisNoticias: {
+        height: 265, 
+        width: 300, 
+        marginBottom: 120, 
+        marginHorizontal: 6,
+    },
 })

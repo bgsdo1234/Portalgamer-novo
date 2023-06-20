@@ -99,7 +99,7 @@ export default function Jogos() {
                 headerRight: () => (
                     <View>
                         <TextInput 
-                        onChangeText={onChangeText}
+                        onChangeText={''}//onChangeText
                         placeholder='Pesquisar apps e jogos'
                         style={estilos.textinput}
                         />

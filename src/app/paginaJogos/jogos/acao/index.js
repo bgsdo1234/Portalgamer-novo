@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { View, Text, StyleSheet, ScrollView } from 'react-native';
 import { Card, Title } from 'react-native-paper'
 
-export default function JogosScreen ({navigation}) {
+export default function JogosScreen ({ navigation }) {
   const [jogos, setJogos] = useState([]);
 
   useEffect(() => {

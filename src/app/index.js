@@ -9,14 +9,8 @@ import { Button, Avatar } from 'react-native-paper'
 import PaginaInicial from './paginaInicial/index'
 import PaginaJogos from './paginaJogos/index'
 import DetalhesJogos from './paginaInicial/jogos/detalhes';
+import PaginaNoticias from './paginaNoticias';
 
-  function Noticias() {
-    return (
-      <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-        <Text>Settings!</Text>
-      </View>
-    );
-  }
   function Perfil() {
     return (
       <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
@@ -74,7 +68,7 @@ import DetalhesJogos from './paginaInicial/jogos/detalhes';
             }
           }}
           />
-          <Tab.Screen name="Noticias" component={Noticias} 
+          <Tab.Screen name="Noticias" component={PaginaNoticias} 
           options={{
             headerShown: false,
             tabBarIcon: ({ color, size, focused }) => {

@@ -94,8 +94,10 @@ export default function DetalhesJogos({route}) {
                                     </Text>
                                     <IconButton
                                     icon="arrow-right"
-                                    
                                     />
+                                    <View>
+                                        <Text></Text>
+                                    </View>
 
                                 </View>
 

@@ -1,8 +1,10 @@
-import { View, Text, TextInput, StyleSheet} from 'react-native'
+import { View, Text, TextInput, StyleSheet } from 'react-native'
 
 export default function PesquisarJogos() {
     return(
-        <View style={estilos.linha}>            
+        
+        <View style={estilos.linha}>     
+
         </View>
     )
 }
